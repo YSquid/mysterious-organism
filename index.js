@@ -50,12 +50,27 @@ const pAequorFactory= (num, dna) => {
                 break;
             }
          
+        },
+
+        compareDNA (compareSpecimen) {
+            let count = 0
+            for (let i = 0; i < this.dna.length; i++) {
+                if (this.dna[i] === compareSpecimen.dna[i]) {
+                    count += 1
+                } else {
+                    null
+                }
+            }
+            console.log(count)
+            let percentMatch = (count / 15) * 100
+            return `The specimens have a ${percentMatch}% DNA match`
         }
     }
 }
 
 
-let testSpecimen =  pAequorFactory(1,mockUpStrand())
-console.log(testSpecimen)
-testSpecimen.mutate()
-console.log(testSpecimen)
+let specimen1 =  pAequorFactory(1,mockUpStrand())
+let specimen2 =  pAequorFactory(2,mockUpStrand())
+console.log(specimen1)
+console.log(specimen2)
+console.log(specimen1.compareDNA(specimen2));
